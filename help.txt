@@ -15,6 +15,140 @@ Step 4. Let's create our first version.
     git add .
 The dot will put everything in the folder into the first version.
 
-Step 5. 
-
 <timestamp: 9:49>
+Step 5. We can do git status again to see that it worked
+    git status.
+
+** Remember, git add doesn't create the version, it just allows us to choose what will be in the next version. To
+make the version...
+
+** Also, version = commit pretty much.
+
+Step 6. Making the version.
+    git commit -m "Version 1"
+
+We just created the first version in our version history!!
+
+However, in each addition of a commit that you add to git, you want to have your name and email associated with it.
+
+git config --global user.name "Nicholas McCarroll"
+git config --global user.email "nickmccarroll8@gmail.com"
+
+Step 6. Now that we've done all this, let's check our version history.
+    git log
+
+Let's say that after creating this version, you messed up somehow, misspelled something, wanted another
+file to be in our previous commit, or forgot something else. Let's see how to fix that.
+
+We just add it again.
+    git add .
+    git commit -m "Version 1" --amend               Instead of going into a new commit, these changes will go to the previous commit.
+    git log
+
+
+--VISUALIZING GIT & GIT FUNDAMENTALS--
+
+A lot of IDE's have git editors that allow you to track your changes in addition to just seeing them in the terminal.
+
+So, in VS code, the 3rd icon that looks like some dots and branches is the git section. This shows you the changes. This is
+like typing "git status" in the terminal.
+
+Also, if you want to "git add" a file from VS code, there is a plus next to the file.
+"git add ." is the equivalent of going to the top banner of changes and clicking the plus icon.
+
+The staged changes area are all the changes that we have locked in, ready to go to the next version.
+The changes area is what we are currently changing, that have yet to go into the staged changes area.
+
+If we modify a file that is already in the staged changes area, it will be in both the staged changes and the changes area.
+This is because git tracks CHANGES, not files.
+
+
+
+To take changes out of the staging area (staged changes items) and back to the changes area, there is a minus button by the file
+in the staged changes area. Let's learn the git terminal command for this.
+    git reset (either . or filename)        This works just like the add command.
+
+
+To delete changes entirely from the working area(changes area, not staged changes), we do:
+    git checkout -- (. or filename) 
+In VS code, its the curved arrow marking by the file name.
+
+
+--COMPLETING THE VERSION HISTORY--
+
+Here is some text for our third version.
+
+For git, we have to create our versions manually.
+
+--VIEWING PREVIOUS VERSIONS OF THE CODE--
+
+    git checkout (commit hash)    With each version of the code, there is a commit hash that comes with it. You can view the git hash 
+                                  from "git log" and it'll have it in yellow text.
+
+When we've taken out this previous verison and do "git log", we will only see the current version that
+we've taken out, and the previous versions before it. In order to see all the versions total:
+    git log --all
+
+With "git log" the version that has (HEAD) next to the commit hash is the one we currently have retrieved. The (MASTER) one
+is the lastest version.
+
+
+--RESTORING CODE TO A PREVIOUS VERSION--
+
+At first, we may think that we have restored to a previous verison of code just by retrieving the code with the
+commit hash. Then we may start updating the code. What happens when we do this?
+When we "git commit -m "Version 1 updated" this code, it'll create a brand new version, but (MASTER) won't be by that verison.
+(HEAD) will be though. This means that git has made a branch instead of a linear version history.
+
+Once we run this commit code, or the "git log" code, we'll need to hit the 'q' key to exit the log.
+Then, to see a visual representation of the branching we type:
+    git log --all --graph
+
+Press 'q' to exit out of this too.
+
+****The (HEAD) and (master) names by the versions come in handy. We can do
+    git checkout master       instead of the long commit hash.
+
+
+To restore a previous version we type:
+    git checkout (commit hash) (. or filename)      We need to give the hash and what files from the version we want to restore.
+
+Now, when we add another commit onto this, git won't start branching off.
+
+We learned git!!!
+
+--MISCILLANEOUS FEATURES--
+
+--One--
+
+Aliases - shortcuts
+For example, "git status" and "git s" are the same.
+
+To make your own aliases, type:
+    git config -global alias.s "status"       The dot whatever is the shortcut you want, and the quotes is what it will replace.
+
+Some useful alias that you can make are:
+
+git config -global alias.cm "commit -m"
+git config -global alias.co "checkout"
+
+
+--Two--
+
+How to ignore certain files from being added to your version history.
+<Timestamp - 33:47>
+
+Make a file called
+    .gitignore
+
+Within the file, type out the files that you don't want to be put into the versions.
+Typing 'git status' will show .gitignore, but not any other files you don't want.
+
+
+--Three--
+
+How to remove git from a project.
+Navigate to the folder with everything, then type:
+    rm -rf .git
+
+<Finished!!>
