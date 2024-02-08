@@ -1,0 +1,20 @@
+Git is mainly used from the command line.
+
+Step 1. Navigate to the folder that the code is in.
+    cd Desktop, cd git-tutorial
+ 
+
+--Time to create a version--
+Step 2. We need to setup git in the folder that has our code.
+    git init
+
+Step 3. Tells us what changes have been made since our previous version.
+    git status
+
+Step 4. Let's create our first version. 
+    git add .
+The dot will put everything in the folder into the first version.
+
+Step 5. 
+
+<timestamp: 9:49>
