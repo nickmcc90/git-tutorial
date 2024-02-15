@@ -49,9 +49,6 @@ The video title is Git and GitHub - 0 Experience to Professional in 1 Tutorial (
 
 <Timestamp 15:34> Boutta start github features.
 
-My stuff didn't work, I needed a token:
-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
-
 --GITHUB FEATURES--
 
 We can check all the commits made to the repository by the clock next to the green code button.
