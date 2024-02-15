@@ -1,0 +1,171 @@
+--ONLINE BACKUP--
+
+We need to create online backups because if everything is just stored on your computer,
+it could stop working or get stolen.
+
+We are going to learn to use github like we use google drive.
+
+1. To Backup online (a place other than the computer to keep everything)
+2. To Sync Updates (changes made on computer will convert to changes in the drive to keep)
+3. To Sync Updates vice versa (changes made on drive will convert to changes on the computer)
+
+
+--INTRO TO GITHUB--
+
+A git repository is a folder that is being tracked for changes by git.
+Github is a special service designed for git repositories.
+
+--FEATURE 1 OF 3: CREATING AN ONLINE BACKUP--
+From what I'm hearing, I should be able to upload my local (computer) files to 
+the remote (github) space using the terminal.
+
+To link a local file to a remote file:
+Step 1. Navigate to the code folder
+  cd Desktop , cd git-tutorial
+
+Step 2. Link the local to the remote 
+  git remote add origin (file link, which is https)         'origin' here is a nickname we call the repository, it could be anything.
+
+Step 3. Check to see if the connection is real.
+  git remote       or git remote -v         The nickname you gave it should pop up. 
+
+
+** I haven't been linking my code, oops. I might do that for javascript.
+
+Uploading to GitHub is called 'pushing', downloading from GitHub is called 'pulling'
+
+When linking the local to the remote, the only person that has access to pushing code to the repository is us.
+We have to tell github that it's us pushing the code with this command:
+  git config --global credential.username "nickmcc90"
+
+Now we are gonna push our code to our linked repository and tell it our branch of commits.
+  git push origin main 
+
+Then you gotta type in your password, but doing this should have synced everything up.
+
+--TROUBLESHOOTING IF GIT PUSH DIDN'T WORK--
+Watch the second installment of the git videos within the supersimpledev playlist from 12:17 to 15:34.
+The video title is Git and GitHub - 0 Experience to Professional in 1 Tutorial (Part 2).
+
+<Timestamp 15:34> Boutta start github features.
+
+My stuff didn't work, I needed a token:
+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
+
+--GITHUB FEATURES--
+
+We can check all the commits made to the repository by the clock next to the green code button.
+
+--FEATURE 2 OF 3: SYNC CHANGES FROM COMPUTER TO GITHUB--
+To check if there is anything out of sync from local to remote, we can type
+  git log --all --graph
+
+There should be red text saying your repository nickname/main.
+
+Now, if you were to commit some changes to your local computer using git commit -m "Version whatever",
+then type 
+  git log --all --graph
+We should see that our version in the local computer should be ahead of the red text. This makes sense because
+we didn't post our commits to github yet.
+
+At this point, we run
+  git push 'repos name' main
+Then, our changes will be made. 
+
+'git push' only pushes commits up to github. So if we don't save the changes into a new version on our local
+computer, then there's nothing for git to push.
+
+<21:43>
+
+If you give a different name to the code while you are --amending it, it will revise that code, but still make a new
+version. You need to give it the same name in order to not make a new commit.
+
+If we do branch off if the code, then there will only be a branch in local and not remote. Typing
+  git push origin main
+will not work. If we git push this, we will overwrite and lose the remote commit. This is not good practice, to overwrite
+code that you already committed to the remote, but for learning purposes, the way to force through this error is to type:
+  git push origin main -f
+dash f is a force push.
+
+--FEATURE 3 OF 3: SYNC CHANGES FROM GITHUB TO COMPUTER--
+
+We will need to open a new window. We will have to clone the code from remote to local.
+
+Step 1: Open new window and navigate to the desktop.
+  cd Desktop
+
+Step 2: Type in URL of the code in the desktop.
+  git clone https://'repository code 'new folder name';     We add the URL and a new folder name.
+
+Step 3: Now we have two local repositories that are completely different from each other. Changing the newly downloaded
+repository won't make changes to the old local repository. This mimics like downloading the repos onto a different computer.
+With this, we are gonna learn how to push a commit to the remote repository through this newly downloaded repos, and have those
+changes synced up with the old local repos.
+
+Step 4: To do this, we'll make sure that our current directory is the folder with the newly downloaded code.
+
+<Timestamp: 28:00>
+
+Step 5: Update the newly downloadeds code and push it to remote.
+Step 6: Go to our other folder, see that it hasn't updated, then type:
+  git fetch
+Step 7: Now our github is updated, but we need local to update, so type:
+  git pull 'origin' main
+This should have everything synced!!!
+
+-----GITHUB PRACTICE SCENARIOS-----
+
+Scenario 1: We have an existing project that we've been working on, but haven't uploaded to git yet.
+  1. git init
+  2. git add .
+  3. git status (optional)
+  4. git commit -m "v1"
+  5. git remote add 'name' 'url'
+  6. git remote (optional)
+  7. git push 'name' main
+  8. git log --all --graph (optional)
+
+Scenario 2: We want to make code that we know will go on Github, but haven't made it yet.
+Let's explore the method where:
+  1. We make the Github repository
+  2. We clone and bring it to local.
+
+Step 1: Change into desktop
+  cd Desktop
+Step 2: git clone 'url'
+Now it creates a folder with the repository name on our computer.
+
+**Using 'git clone' saves you the setup steps of having to run 'git init' and needed to 'git remote add 'name' 'url'.
+
+Scenario 3: We joined a new team. Their project is already on Github. 
+  1. We need to download the team's code.
+  2. We need to start making contributions to it.
+
+So this is easy.
+  1. cd Desktop
+  2. git clone 'team code url' 'name' (we can give this an alternative name.)
+  3.**make some changes to the code
+  4. git add .
+  5. git commit -m 'nick's revision'
+  6. git push 'name' main
+  7. Yay!
+
+
+
+  -----SETTING UP SSH KEYS FOR GITHUB------
+
+  1. In the terminal, run
+    ls -al ~/.ssh
+  This will give us a list of files if we have any of the following
+  files, then we have an SSH key:
+    id_rsa.pub
+    id_ecdsa.pub
+    id_ed25519.pub
+
+  If we don't have any of these files, we gotta generate a new SSH key.
+
+  2. Look at the helptext2picture and type that code in. Put in your own email
+  3. Press enter to skip the weird line of code.
+  4. Make a new password.
+
+  <Timestamp 44:44> About to type in more code.
