@@ -1,0 +1,17 @@
+1. Merging
+2. Branching
+3. Feature Branch Workflow
+
+
+Imagine that you are working on some code for your job. You make two commits, but they are works-in-progress,
+are you plan on going back to look at them/fix them.
+Then your boss comes up to you and says that there is a bug in their website and they want you to fix it. What
+you wouldn't do is save a commit that fixes the bug right after the two commits that you made because you aren't
+sure if those WIPs work yet. 
+The solution would be to branch off your WIPs, and have the bug fixing code be in the main branch of code. 
+
+So basically, you can have the bug fix on the main branch of code, while your new feature WIPs can be on a separate branch.
+
+**Let's make a folder called git-brancing for this lesson.
+
+<Timestamp: 4:11> About to get past the 3 commits and talk about branching.
