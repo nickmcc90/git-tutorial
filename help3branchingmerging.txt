@@ -2,9 +2,10 @@
 2. Branching
 3. Feature Branch Workflow
 
+---Branching----
 
 Imagine that you are working on some code for your job. You make two commits, but they are works-in-progress,
-are you plan on going back to look at them/fix them.
+and you plan on going back to look at them/fix them.
 Then your boss comes up to you and says that there is a bug in their website and they want you to fix it. What
 you wouldn't do is save a commit that fixes the bug right after the two commits that you made because you aren't
 sure if those WIPs work yet. 
@@ -15,3 +16,43 @@ So basically, you can have the bug fix on the main branch of code, while your ne
 **Let's make a folder called git-brancing for this lesson.
 
 <Timestamp: 4:11> About to get past the 3 commits and talk about branching.
+
+Now that I've made the 3 base commits, let's make a branch. Type:
+  git branch 'branch-name' 
+
+Check work with:
+  git log --all --graph
+
+There should be two green words next to your commit. The main, and then whatever you called your branch. The arrow
+should be pointing to main, because we are still in the main branch. Let's swap to our new branch:
+  git checkout 'branch-name'
+  git log --all --graph
+
+Now the arrow should be pointing toward the new branch. We can add commits here and have it be on the new branch.
+
+---
+I accidentally messed up and added a commit to main. In order to delete it, I typed in:
+  git reset --soft HEAD~
+Then that commit was gone.
+---
+
+So I've added two commits so far. Now let's do the part where we fix a bug on main. We want to go back to
+main branch:
+  git checkout main
+The files made from the feature are deleted now, but stashed away in its branch.
+
+If we check git log, we will actually see a branching off effect.
+
+
+
+---Merging---
+
+With the past example, we have that branch that we were working on with the features. We don't
+want them to be features forever..... we'll eventually want to put the bug fix and the features
+all into our code as one finished product. We use merging here.
+
+When we merge, we sustain both changes from both files we are merging.
+
+When we merge, the result will go onto the branch you are currently working on.
+
+<time stamp 15:25>
