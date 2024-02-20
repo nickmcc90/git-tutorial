@@ -56,3 +56,52 @@ When we merge, we sustain both changes from both files we are merging.
 When we merge, the result will go onto the branch you are currently working on.
 
 <time stamp 15:25>
+
+Now that we are on our main branch. Let's merge. Remember we have to add a message name too, because
+this merge will be saved in a commit.
+  git merge feature1 -m 'merging commit'
+Now we check our work with:
+  git log --all --graph
+And it has a pretty design of the branches merging together with our final commit.
+
+
+
+---Merge conflicts-----
+This is when git doesn't know what the result of the merge should be. 
+I.e the same line of code in two branches was deleted and made into something different
+from one another.
+
+In order to practice this, let's make 2 different branches, and change the same code, and
+try to merge them.
+
+After doing this, git is telling us that it doesn't know what to do. It pulls open a tab in vs code
+and shows us the current change within the HEAD (the current branch that we are on), and then the
+'incoming change' which should be the other branch we are trying to merge which should be conflicting
+with our current branch code.
+
+In order to tell git which change we want, we just delete everything that we don't want from the page
+that git is showing us in vscode. We also could just delete everything SINGLE thing and write some new
+code, git doesn't care. It'll put whatever we leave in the page into a new commit.
+
+To finish this merge, we just create a new commit with the code we want.
+
+
+----Feature Branch Workflow------
+
+What are feature branches?
+
+They are a step-by-step process for using Git and Github.
+
+One feature branch is like the one we did during the branch tutorial earlier in this file. One thing
+we missed from that lesson though was code reviews. Typically, when we finish a branch, another
+software engineer will look at the code to proofread it.
+
+So, how do we use Git and Github to do code reviews? Let's see.
+
+Feature Branch Workflow Steps
+1. Create a feature branch **we know how to do this
+2. Upload this branch to Github (remote repository. The main branch and the feature will be uploaded all in one.)
+3. Create a pull request (doing the code reviews, testing it.)
+4. Merge feature branch into main branch. (This time, we'll merge on Github)
+
+<30:29> About to go step by step through an example of feature branch workflow.
