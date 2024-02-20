@@ -105,3 +105,75 @@ Feature Branch Workflow Steps
 4. Merge feature branch into main branch. (This time, we'll merge on Github)
 
 <30:29> About to go step by step through an example of feature branch workflow.
+
+First we make the new branch
+  git branch 'new-feature'
+Then we make a commit on that branch
+  git add .
+  git commit -m 'new-feature'
+Then we make a new repository and connect it
+  git remote add origin https----link
+Then we switch to the main branch and upload it
+  git checkout main
+  git push origin main
+Now we are gonna switch to our branch and upload it
+  git checkout new-feature
+  git push origin new-feature
+
+We can do a pull request now. In github, in the repository, go to the pull requests tab and
+hit the green button that says new pull request. Then, it'll ask what to compare the main branch
+to, so you'll select new-feature (or whatever the branch is called). Then we hit green button that
+says create pull request, then make a comment describing the feature, then hit create pull request again
+near the bottom.
+
+You can send this url to people to open and they can make comments through hovering and clicking
+a blue plus over the code. 
+
+Once the comments are done, we can merge this, now on GitHub. To do this, we just click the merge pull
+request button that's green on the page. 
+
+Now that we've done this merging on github remotely, we'll wanna sync these changes locally. We type:
+  git fetch
+  git log --all --graph
+to see our changes from remote. Then we switch to main branch and type:
+  git pull origin main
+to sync changes.
+
+
+----Merge conflicts in feature branch workflow-----
+
+Two engineers have their own branch with a change to master on the same file, and the same line.
+Engineer 1 follows the workflow and merges their code with main, no problem. Engineer 2 does the
+same thing, but since their branch has modified what engineer 1 modified before (same file, same
+line), it creates a conflict.
+
+To delete a branch:
+  git branch -D 'branch-name'
+
+So I have made two different branches 'feature1' 'feature2' I've made commits in them where
+the same file and same line is changed to something different. I've uploaded them both to
+github. I've created a pull request for both of them too. So at this point, people are
+reviewing them.
+
+Feature1 gets merged first. Then we'll see in the pull request of feature2 that there is a
+conflict. To solve this, we click web editor that's underlined, and do the same thing as before,
+delete everything we don't want and resolve the conflict.
+
+Instead of the web editor, we can resolve the conflict on our computer, locally.
+
+Let's make the same situation but with 'feature3' and 'feature4'
+
+For the branch that is found to create conflicts, feature 4 (the branch we chose 2nd to merge),
+we are going to first:
+  git checkout main
+  git pull origin main
+  git checkout feature4
+  git merge main
+  **pick the best code in vscode
+  git add .
+  git commit -m 'resolution'
+  git push origin feature4
+This should show in remote GitHub, as done. The pull request will still show to merge, but in small
+text it should show our commit name.
+
+<Done!>
